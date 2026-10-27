@@ -1,0 +1,6 @@
+{
+  "liveSassCompile.settings.autoprefix": [
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,225 @@
+$breakpoints:( "xs":0, "sm":480px, "md":768px, "lg":992px, "xl":1200px, );
+@mixin xl {
+    @media( min-width: map-get($breakpoints, 'xl')) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media( min-width: map-get($breakpoints, 'xl')) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media( max-width: map-get($breakpoints, 'md')) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media( max-width: map-get($breakpoints, 'lg')) {
+        @content;
+    }
+}
+
+@mixin desk {
+    @media( min-width: map-get($breakpoints, 'lg')) {
+        @content;
+    }
+}
+
+@mixin desklg {
+    @media( min-width: map-get($breakpoints, 'xl')) {
+        @content;
+    }
+}
+
+@mixin tab {
+    @media (min-width: 768px) and (max-width: map-get($breakpoints, "lg") - 1) {
+        @content;
+    }
+}
+
+@mixin max-lg {
+    @media (max-width: 1199.9px) {
+        @content;
+    }
+}
+
+//ini custom breakpoints
+@mixin breakpoint($bp:0) {
+    @media (min-width: $bp) {
+        @content;
+    }
+}
+
+//Mixins
+@mixin all {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden; 
+}  
+
+@mixin flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin primary-font {
+    font-family: "Lato", sans-serif;
+}
+
+@mixin secondary-font {
+    font-family: "Lato", sans-serif;
+}
+
+@mixin upper {
+    text-transform: uppercase;
+}
+
+@mixin regular {
+    font-weight: 400;
+}
+
+@mixin medium {
+    font-weight: 500;
+}
+
+@mixin semi {
+    font-weight: 600;
+}
+
+@mixin bold {
+    font-weight: 700;
+}
+
+@mixin dflex {
+    display: flex;
+}
+
+@mixin underline {
+    text-decoration: underline;
+}
+
+@mixin dfw {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin img-white {
+    filter: brightness(0) invert(1);
+}
+
+@mixin rotate {
+    transform: rotate(180deg);
+}
+
+@mixin img-green {
+    filter: brightness(0) saturate(100%) invert(47%) sepia(11%) saturate(730%) hue-rotate(74deg) brightness(91%) contrast(85%);
+}
+
+@mixin img-black {
+    filter: brightness(0) saturate(100%) invert(1%) sepia(77%) saturate(1660%) hue-rotate(166deg) brightness(90%) contrast(102%);
+}
+
+@mixin img-blue {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(26%) saturate(1253%) hue-rotate(169deg) brightness(92%) contrast(94%);
+}
+
+//Variables
+$primary:#1C3C5C;
+$darkblue:#1C3C5C;
+$blue:#002A86;
+$bg-blue:#002A86;
+$brightblue:#3F8EBA;
+$secondary:#C5674C;
+$tertiary:#799D7D;
+$eartyellow:#D2A86C;
+$mutedyellow:#FFCB8D;
+$salmon:#FF7E69;
+$yellow:#F1C400;
+$lightblue:#D1E4F6;
+$black:#000;
+$purple:#F01FF0;
+$orange:#EB6F24;
+$green:#617A63; 
+$darkgreen:#404B41; 
+$brand-green:#154734;
+$border-color:#D4DCE4;
+$red:#C01111;
+$red-hover:#C50105;
+$purple:#7A4090;
+$white:#ffffff;
+$gray:#464646;
+$cream:#FFE9CF;
+$lightgray:#FFF9F2;
+$text-color:#2D2D2D;
+$primary-font:"Lato", sans-serif;
+$secondary-font:'Museo';
+$shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+// color paltte - 
+$colors:( "primary":$primary, "secondary":$secondary, "green":#008943, "black":#1E1E1E, "lightgray":#F5F5F5);
+.test-btn {
+    background-color: map-get($colors, "blue");
+}
+
+@mixin fancy-border($size:1px, $color:#000) {
+    border: $size solid $color;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+@font-face {
+    font-family: 'Museo';
+    src: url('../fonts/Museo300-Regular.woff2') format('woff2'),
+        url('../fonts/Museo300-Regular.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Museo';
+    src: url('../fonts/Museo700-Regular.woff2') format('woff2'),
+        url('../fonts/Museo700-Regular.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Museo';
+    src: url('../fonts/Museo-900.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}

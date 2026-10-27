@@ -1,0 +1,924 @@
+// =============================================================================
+// Hero / Main banner
+// =============================================================================
+.main_banner {
+    position: relative;
+    padding-top: 64px;
+    @include xl {
+        padding-top: 102px;
+    }
+    .iframe_wrap {
+        width: 100%;
+    }
+    // -------------------------------------------------------------------------
+    // Carousel wrapper
+    // -------------------------------------------------------------------------
+    .carousel {
+        position: relative;
+        background: linear-gradient(89deg, rgba(3, 25, 73, 1) 21%, rgba(0, 42, 134, 1) 100%);
+    }
+    // -------------------------------------------------------------------------
+    // Slide
+    // -------------------------------------------------------------------------
+    .carousel-inner {
+        position: relative;
+    }
+    .banner_img {
+        >img {
+            width: 100%;
+            height: 640px;
+            max-height: calc(100vh - 140px);
+            object-fit: cover;
+            @include breakpoint(768px) {
+                display: block;
+            }
+        }
+        // Gradient overlay on desktop image (Figma fill_YY0XLX)
+       
+    }
+    // -------------------------------------------------------------------------
+    // Caption (heading + subhead + CTA)
+    // -------------------------------------------------------------------------
+    .caption_wrap {
+        position: static;
+        padding: 50px 0;
+        @include breakpoint(768px) {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            padding: 54px 0;
+            z-index: 2;
+        }
+        .container {
+            padding-left: 16px;
+            padding-right: 16px;
+            @include breakpoint(768px) {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    }
+    .carousel-caption {
+        position: static;
+        padding: 0;
+        text-align: left;
+        color: $white;
+        max-width: 100%;
+        @include breakpoint(768px) {
+            max-width: 770px;
+        }
+        // h2 inherits Montserrat from _base.scss — override weight (light), size, line-height, color, margin
+        h2 {
+            color: $white;
+            font-weight: 300;
+            font-size: 45px;
+            line-height: 56px;
+            margin-bottom: 24px;
+            @include breakpoint(768px) {
+                font-size: 56px;
+                line-height: 64px;
+            }
+            @include xl {
+                font-size: 63px;
+                line-height: 72px;
+            }
+        }
+        // p inherits Montserrat / 400 from _base.scss — only override size, line-height, color, margin
+        p {
+            color: $white;
+            font-size: 23px;
+            line-height: 33px;
+            margin-bottom: 32px;
+        }
+        .btn_sm {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #fff;
+            min-height: 44px;
+            line-height: 21px;
+        }
+    }
+    // -------------------------------------------------------------------------
+    // Side arrows (hidden on mobile per Figma)
+    // -------------------------------------------------------------------------
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+        width: 44px;
+        height: 44px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 1;
+        background: transparent;
+        z-index: 5;
+        @include breakpoint(768px) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-control-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            img {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+            }
+        }
+        &:hover,
+        &:focus {
+            opacity: 1;
+            outline: none;
+            .carousel-control-icon {
+                filter: brightness(0) saturate(100%) invert(75%) sepia(59%) saturate(206%) hue-rotate(345deg) brightness(98%) contrast(89%);
+            }
+        }
+    }
+    .carousel-control-prev {
+        left: 24px;
+    }
+    .carousel-control-next {
+        right: 24px;
+        .carousel-control-icon img {
+            transform: rotate(180deg);
+        }
+    }
+    // -------------------------------------------------------------------------
+    // Indicators (pagination dots)
+    // -------------------------------------------------------------------------
+    .carousel-indicators {
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        margin: 24px 0 0;
+        padding: 0;
+        list-style: none;
+        z-index: 4;
+        @include breakpoint(768px) {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 32px;
+            margin: 0;
+        }
+        li {
+            box-sizing: border-box;
+            width: 12px;
+            height: 12px;
+            margin: 0;
+            border: 1.35px solid $white;
+            border-radius: 50%;
+            background: #4A4A4A;
+            opacity: 1;
+            cursor: pointer;
+            transition: background .2s ease, border-color .2s ease;
+            &.active {
+                border-color: $white;
+                background: $white;
+            }
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+}
+
+// =============================================================================
+// CTA bar (mortgage rates) — sits below the hero, inside .main_banner
+// =============================================================================
+.cta_bar {
+    background: $secondary;
+    padding: 0px 0;
+    height: 360px;
+    position: relative;
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+        @include xl {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+    }
+    .cta_bar__inner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
+        text-align: left;
+        @include breakpoint(768px) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    // p inherits Montserrat / 400 / black from _base.scss — only override size and line-height
+    p {
+        margin: 0;
+        font-size: 22px;
+        line-height: 34px;
+    }
+    .cta_bar__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        align-self: flex-start;
+        min-height: 44px;
+        padding: 10px 24px;
+        border: 1px solid $black;
+        border-radius: 6px;
+        background: $primary;
+        color: $white;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 21px;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: background .2s ease, color .2s ease, border-color .2s ease;
+        @include breakpoint(768px) {
+            align-self: auto;
+        }
+        &:hover,
+        &:focus {
+            background: $yellow;
+            color: $black;
+            border-color: $primary;
+            outline: none;
+            text-decoration: none;
+        }
+    }
+}
+
+.home {
+    .img_text_card {}
+}
+
+// 
+
+
+// route list
+.route_list_wraper{
+    border-radius: 16px;
+    border: 1px solid $border-color;
+    background: $white;
+    padding: 24px;
+    ul{
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+        padding-left: 0px;
+        margin-bottom: 0px;
+        li{
+            list-style: none;
+            a,
+            button.route_list_item{
+                border-radius: 8px;
+                background:  var(--route-bg);
+                color: var(--route-text);
+                padding: 24px 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 100%;
+
+                &:hover{
+                    text-decoration: none;
+                    
+                }
+            }
+        }
+    }
+}
+
+// service alerts
+.service-alerts {
+    max-width: 800px;
+  border: 1px solid $border-color;
+  border-radius: 32px;
+  background: #F1F2F2;
+  box-shadow: 0 24px 60px 0 rgba(0, 0, 0, 0.20);
+  font-family:$primary-font;
+    width: 800px;
+    z-index: 55;
+    margin-top: 16px;
+
+
+.alerts-header {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 32px 56px 32px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.count-badge {
+  background: #DF8836;
+  color: #202020;
+  font-weight: 700;
+  font-family: $primary-font;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 24px;
+  height: 24px;
+}
+
+.title {
+
+    color: #154734;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 24px;
+}
+
+.chevron {
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.alerts-body {
+    display: none;
+  padding: 0px 56px 32px 56px;
+}
+span.expand_btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../img/s-plus.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    &.expanded {
+        background-image: url(../img/s-minus.svg);
+    }
+}
+
+.alert-item {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  margin-bottom: 24px;
+  flex-direction: column;
+  border-radius: 8px;
+  background:  #FFF;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.10);
+  p{
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; 
+    margin-bottom: 0px;
+    color: #202020;
+    @include line-clamp(2);
+  }
+}
+
+.alert-badge {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 24px;
+}
+.alert-title-wrap{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.alert-title{
+    color:  $black;
+    font-family: $primary-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; 
+    text-transform: capitalize;
+}
+
+/* Severity styles */
+ .alert-badge {
+  background: $primary;
+  color: #fff;
+  &.green{
+    background-color: #0A7A21;
+  }
+  &.yellow{
+    background-color: #FFD96E;
+    color: $black;
+  }
+  &.red{
+    background-color: #D70600;
+  }
+  &.lightblue{
+    background-color: #3CD2FF;
+    color: $black;
+  }
+  &.pink{
+    background-color: #FFB5DE;
+    color: $black;
+  }
+  &.blue{
+    background-color: #1421B2;
+  }
+
+}
+
+.alert-content strong {
+  font-size: 14px;
+  display: block;
+}
+
+.alert-content p {
+  font-size: 13px;
+  margin: 4px 0 0;
+  color: #333;
+}
+}
+.plan_trip_wraper{
+    position: relative;
+    bottom: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+}
+.service-alerts_actions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+// video banner
+/* ================================
+   Hero section
+================================ */
+
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+  width: 100%;
+  min-height: 440px;
+  min-height: clamp(440px, 43vw, 680px);
+  overflow: hidden;
+  background-color: #343a35;
+}
+
+/* ================================
+   Background media
+================================ */
+
+.hero__media {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  overflow: hidden;
+  background-color: #343a35;
+}
+
+.hero__image,
+.hero__video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.hero__image {
+  z-index: 0;
+}
+
+.hero__video {
+  z-index: 1;
+}
+
+/* The video is hidden until playback begins successfully. */
+.hero__video:not(.is-playing) {
+  visibility: hidden;
+}
+
+.hero__video.is-playing {
+  visibility: visible;
+}
+
+/* ================================
+   Dark overlay
+================================ */
+
+.hero__overlay {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.57) 42%,
+    rgba(0, 0, 0, 0.36) 100%
+  );
+}
+
+/* ================================
+   Content container
+================================ */
+
+.hero__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  min-height: inherit;
+  margin: 0 auto;
+  padding: 64px 120px 76px;
+}
+
+.hero__content {
+  width: 100%;
+  max-width: 630px;
+}
+
+
+
+.hero__title {
+  margin: 0 0 9px;
+  color: #ffffff;
+  text-wrap: pretty;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%; 
+  font-family: $primary-font;
+}
+
+.hero__description {
+    max-width: 630px;
+    overflow: hidden;
+    color:  #FFF;
+    text-overflow: ellipsis;
+    font-size: 18px;
+    font-weight: 900;
+    line-height: 140%; /* 25.2px */
+}
+
+/* ================================
+   CTA button
+================================ */
+
+.hero__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 24px;
+  border-radius: 100px;
+  border: 1px solid  #FFF;
+  background:  $mutedyellow;
+  color: #000000;
+  font-family: $primary-font;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
+.hero__button:hover {
+  border-color: #ffffff;
+  color: #000000;
+  background-color: #FF7E69;
+  text-decoration: none;
+}
+
+.hero__button:active {
+  transform: translateY(1px);
+}
+
+/* ================================
+   Video label
+================================ */
+
+.hero__video-label {
+  position: absolute;
+  top: 18px;
+  right: 2.2%;
+  color: #ffffff;
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* ================================
+   Video controls
+================================ */
+
+.hero__controls {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 4px 16px;
+}
+
+.hero__control {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.32);
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.hero__control:hover {
+  color: #171717;
+  background-color: #ffffff;
+}
+
+.hero__control:focus-visible {
+  outline: 3px solid #ffd18a;
+  outline-offset: 4px;
+}
+
+.hero__icon {
+  display: block;
+  fill: currentColor;
+}
+
+.hero__icon--play {
+  display: none;
+}
+
+/* Display the play icon on the pause button after pausing. */
+.hero__control.is-paused .hero__icon--pause {
+  display: none;
+}
+
+.hero__control.is-paused .hero__icon--play {
+  display: block;
+}
+
+.hero__status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ================================
+   Tablet
+================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 500px;
+    min-height: clamp(460px, 68vw, 560px);
+  }
+
+  .hero__container {
+    padding: 64px 6% 82px;
+  }
+
+  .hero__content {
+    max-width: 460px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 4.5vw, 35px);
+    line-height: 1.3;
+  }
+
+  .hero__description {
+    max-width: 420px;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .hero__image,
+  .hero__video {
+    object-position: 55% center;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.60) 60%,
+      rgba(0, 0, 0, 0.42) 100%
+    );
+  }
+}
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 540px;
+    min-height: clamp(500px, 115svh, 680px);
+    align-items: flex-end;
+  }
+
+  .hero__container {
+    align-items: flex-end;
+    min-height: inherit;
+    padding: 100px 24px 88px;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+
+  .hero__title {
+    margin-bottom: 12px;
+    font-size: clamp(27px, 7.5vw, 33px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .hero__description {
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .hero__button {
+    min-height: 46px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .hero__video-label {
+    top: 16px;
+    right: 18px;
+    font-size: 13px;
+  }
+
+  .hero__controls {
+    bottom: 12px;
+    gap: 8px;
+  }
+
+  .hero__control {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero__image,
+  .hero__video {
+    object-position: 57% center;
+  }
+
+  .hero__overlay {
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.84) 0%,
+      rgba(0, 0, 0, 0.68) 48%,
+      rgba(0, 0, 0, 0.30) 100%
+    );
+  }
+}
+
+/* ================================
+   Short screens in landscape
+================================ */
+
+@media (max-height: 450px) and (orientation: landscape) {
+  .hero {
+    min-height: 420px;
+  }
+
+  .hero__container {
+    padding-top: 52px;
+    padding-bottom: 70px;
+  }
+
+  .hero__content {
+    max-width: 540px;
+  }
+
+  .hero__title {
+    font-size: 27px;
+  }
+
+  .hero__description {
+    font-size: 13px;
+  }
+}
+
+/* ================================
+   Reduced motion accessibility
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero__button:active {
+    transform: none;
+  }
+}
+
+/* ================================
+   High contrast / forced colors
+================================ */
+
+@media (forced-colors: active) {
+  .hero__button,
+  .hero__control {
+    border: 2px solid ButtonText;
+  }
+
+  .hero__button {
+    color: ButtonText;
+    background: ButtonFace;
+  }
+
+  .hero__control {
+    color: ButtonText;
+    background: ButtonFace;
+  }
+
+  .hero__title,
+  .hero__description,
+  .hero__eyebrow,
+  .hero__video-label {
+    color: CanvasText;
+  }
+
+  .hero__overlay {
+    background: Canvas;
+    opacity: 0.9;
+  }
+}
+

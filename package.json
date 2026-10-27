@@ -1,0 +1,19 @@
+{
+  "name": "nbu",
+  "private": true,
+  "browserslist": [
+    "last 2 versions",
+    "not dead"
+  ],
+  "scripts": {
+    "sass": "sass --load-path=css css/custom.scss css/custom.css",
+    "sass:watch": "sass --load-path=css css/custom.scss css/custom.css --watch",
+    "css": "npm run sass && postcss css/custom.css -o css/custom.css",
+    "css:watch": "npm run sass:watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.69.0"
+  }
+}

@@ -1,0 +1,500 @@
+// Homebuyer seminars — Events block (Figma 15194:14405)
+// No CSS gap property: spacing via margin and padding only.
+.seminar-events {
+    background-color: #d1e4f6;
+    padding: 40px 24px 48px;
+    box-sizing: border-box;
+    @media (min-width: 768px) {
+        padding: 65px 53px 75px;
+    }
+}
+
+.seminar-events_wrap {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1336px;
+    box-sizing: border-box;
+}
+
+.seminar-events_intro {
+    text-align: center;
+    margin-bottom: 24px;
+    @media (min-width: 768px) {
+        margin-bottom: 33px;
+    }
+}
+
+.seminar-events_intro h2 {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 34px;
+    color: #002a86;
+    text-align: center;
+    @media (min-width: 768px) {
+        font-size: 32px;
+        line-height: 40px;
+    }
+}
+
+.seminar-events_toolbar {
+    margin-bottom: 24px;
+}
+
+.seminar-events_toolbar-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.seminar-events_toolbar-group {
+    margin-bottom: 16px;
+    box-sizing: border-box;
+}
+
+.seminar-events_toolbar-group:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+    .seminar-events_toolbar-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+    .seminar-events_toolbar-group {
+        margin-bottom: 0;
+        margin-right: 20px;
+        flex: 0 0 auto;
+    }
+    .seminar-events_toolbar-group:last-of-type {
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1280px) {
+    .seminar-events_toolbar-row {
+        flex-wrap: nowrap;
+    }
+}
+
+
+/* 768px–1279px: content & padding cannot fit one row with fixed 300/202 inputs (~1146px min).
+   Full-width search row, then filters + clear + sort align on the next row(s). */
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .seminar-events_toolbar-row {
+        flex-wrap: wrap;
+        align-items: flex-end;
+    }
+    .seminar-events_toolbar-group {
+        margin-right: 16px;
+    }
+    .seminar-events_toolbar-group:last-of-type {
+        margin-right: 0;
+    }
+    .seminar-events_toolbar-group--search {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: none;
+        margin-right: 0;
+        margin-bottom: 16px;
+    }
+}
+
+.seminar-events_toolbar-spacer {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .seminar-events_toolbar-spacer {
+        display: block;
+        height: 31px;
+    }
+}
+
+.seminar-events_toolbar-group--search {
+    width: 100%;
+}
+
+
+/* 300px search width only when toolbar is single-row (see 768–1279 full-width rule). */
+
+@media (min-width: 1280px) {
+    .seminar-events_toolbar-group--search {
+        width: 300px;
+        max-width: 300px;
+    }
+}
+
+.seminar-events_toolbar-group--search .seminar-events_field--search {
+    max-width: none;
+}
+
+.seminar-events_toolbar-group--type,
+.seminar-events_toolbar-group--location,
+.seminar-events_toolbar-group--sort {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .seminar-events_toolbar-group--type,
+    .seminar-events_toolbar-group--location,
+    .seminar-events_toolbar-group--sort {
+        width: 202px;
+        max-width: 202px;
+    }
+    /* Push Sort by to the right; filters stay left (mockup). */
+    .seminar-events_toolbar-group--sort {
+        margin-left: auto;
+        margin-right: 0;
+    }
+}
+
+.seminar-events_toolbar-group--clear {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .seminar-events_toolbar-group--clear {
+        width: auto;
+    }
+}
+
+.seminar-events_toolbar-group--clear .seminar-events_clear {
+    margin-top: 0;
+    gap: 10px;
+}
+
+.seminar-events_label {
+    display: block;
+    margin: 0 0 6px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 25px;
+    color: #2d2e2f;
+}
+
+.seminar-events_label--dark {
+    color: #000000;
+}
+
+.seminar-events_field {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 44px;
+    padding: 7px 16px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #002a86;
+    border-radius: 24px;
+}
+
+.seminar-events_field--search {
+    max-width: 100%;
+}
+
+.seminar-events_search-img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 20px;
+    max-height: 20px;
+    flex-shrink: 0;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
+.seminar-events_field input[type="search"] {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    color: #002a86;
+    text-align: right;
+    outline: none;
+}
+
+.seminar-events_field input[type="search"]::placeholder {
+    color: #002a86;
+    opacity: 1;
+}
+
+.seminar-events_select-wrap {
+    width: 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 768px) {
+    .seminar-events_select-wrap {
+        max-width: none;
+    }
+}
+
+.seminar-events_select {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 7px 40px 7px 16px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 21px;
+    color: #002a86;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #002a86;
+    border-radius: 24px;
+    appearance: none;
+}
+
+.seminar-events_clear {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 8px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.3;
+    color: #002a86;
+    text-decoration: none;
+}
+
+.seminar-events_clear:hover,
+.seminar-events_clear:focus {
+    text-decoration: underline;
+}
+
+.seminar-events_clear-x {
+    display: inline-block;
+    margin-right: 8px;
+    font-weight: 400;
+}
+
+.seminar-events_select--sort {
+    text-align: left;
+}
+
+.seminar-events_divider {
+    display: block;
+    height: 0;
+    margin: 0 0 24px;
+    padding: 0;
+    border: 0;
+    border-top: 1px solid #4a4a4a;
+}
+
+@media (min-width: 992px) {
+    .seminar-events_divider {
+        margin-bottom: 32px;
+    }
+}
+
+.seminar-events_cards {
+    padding-bottom: 8px;
+}
+
+.seminar-events_card-col {
+    margin-bottom: 32px;
+    box-sizing: border-box;
+}
+
+.seminar-events_card-col:last-child {
+    margin-bottom: 0;
+}
+
+.seminar-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.seminar-card_media--placeholder {
+    position: relative;
+    min-height: 288px;
+    border-radius: 12px 12px 0 0;
+}
+
+.seminar-card_media-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 288px;
+    box-sizing: border-box;
+    padding: 24px 16px;
+}
+
+.seminar-card_symbol {
+    display: block;
+    max-width: 96px;
+    max-height: 96px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.seminar-card_media--symbol-light .seminar-card_symbol {
+    filter: brightness(0) invert(1);
+}
+
+.seminar-card_media {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.seminar-card_img {
+    display: block;
+    width: 100%;
+    height: 288px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+    @include md {
+        height: auto;
+    }
+}
+
+.seminar-card_date-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 112px;
+    padding: 12px 4px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #a9aaac;
+    border-radius: 0;
+}
+
+.seminar-card_date-badge span {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.seminar-card_dow {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.seminar-card_daynum {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #002a86;
+}
+
+.seminar-card_month {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.seminar-card_body {
+    padding: 24px;
+    box-sizing: border-box;
+    border-radius: 0 0 12px 12px;
+    background-color: #ffffff;
+}
+
+.seminar-card_meta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.seminar-card_meta-icon {
+    display: block;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    margin-right: 8px;
+}
+
+span.seminar-card_meta-label {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #002a86;
+    text-align: left;
+}
+
+.seminar-card h3 {
+    margin: 0 0 8px;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    color: #000000;
+}
+
+@media (min-width: 768px) {
+    .seminar-card h3 {
+        font-size: 23px;
+        line-height: 32px;
+    }
+}
+
+.seminar-card p {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #000000;
+}
+
+.seminar-card_actions {
+    margin-top: 16px;
+    padding-top: 8px;
+    box-sizing: border-box;
+}
+
+.seminar-card_actions .btn_sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+}

@@ -1,0 +1,585 @@
+// =============================================================================
+// Upcoming Events + News
+// Figma desktop: 15069-5224  |  Figma mobile (<767): 23119-7959
+// =============================================================================
+.up_events {
+    // Mobile: stack columns full-width; lg+ : two-column row
+    .up_events__row {
+        align-items: stretch;
+    }
+    // -------------------------------------------------------------------------
+    // Shared column container (inner wrap with padding)
+    // -------------------------------------------------------------------------
+    .up_events__container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        height: 100%;
+    }
+    // -------------------------------------------------------------------------
+    // Section titles ( h2 inherits Montserrat 700 / 32px / $primary from _base )
+    // override only line-height + margin to match Figma (32/40)
+    // -------------------------------------------------------------------------
+    .up_events__title {
+        h2 {
+            line-height: 40px;
+            margin: 0;
+        }
+    }
+    // -------------------------------------------------------------------------
+    // Left / top column — Upcoming Events (light blue gradient bg)
+    // -------------------------------------------------------------------------
+    .up_events__events {
+        background: linear-gradient(47deg, rgba(241, 246, 252, 1) 0%, rgba(209, 228, 246, 1) 100%);
+        padding: 65px 16px;
+        @include desk {
+            padding: 65px 52px;
+        }
+    }
+    .up_events__cards {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+    .up_events__card {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 32px;
+        background: $white;
+        border: 1px solid rgba($white, 0.2);
+        border-radius: 12px;
+        // h3 inherits Montserrat 700 / 23px from _base — only override line-height + margin + colour
+        h3 {
+            color: $black;
+            line-height: 32px;
+            margin: 0;
+            font-weight: 700;
+            a {
+                color: inherit;
+                text-decoration: none;
+                transition: color .2s ease;
+                &:hover,
+                &:focus {
+                    color: $primary;
+                    text-decoration: none;
+                    outline: none;
+                }
+            }
+        }
+        // p inherits Montserrat 400 / $black from _base — override size + line-height + margin
+        p {
+            font-size: 16px;
+            line-height: 25px;
+            margin: 0;
+        }
+    }
+    .up_events__card-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+    }
+    // -------------------------------------------------------------------------
+    // Right / bottom column — News (white bg)
+    // -------------------------------------------------------------------------
+    .up_events__news {
+        background: $white;
+        padding: 65px 16px;
+        @include desk {
+            padding: 65px 53px 0 27px;
+        }
+    }
+    .up_events__news-list {
+        display: flex;
+        flex-direction: column;
+    }
+    .up_events__news-item {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 24px 0;
+        border-top: 1px solid #4A4A4A;
+        &:last-child {
+            border-bottom: 1px solid #4A4A4A;
+        }
+        h3 {
+            color: $black;
+            line-height: 32px;
+            margin: 0;
+            a {
+                color: inherit;
+                text-decoration: none;
+                transition: color .2s ease;
+                &:hover,
+                &:focus {
+                    color: $primary;
+                    text-decoration: none;
+                    outline: none;
+                }
+            }
+        }
+        p {
+            font-size: 16px;
+            line-height: 25px;
+            margin: 0;
+        }
+    }
+    // -------------------------------------------------------------------------
+    // "View event" / "Read Full Article" link with link-circle icon
+    // -------------------------------------------------------------------------
+    .up_events__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-start;
+        color: $primary;
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 21px;
+        text-decoration: none;
+        transition: color .2s ease;
+        img {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+            flex-shrink: 0;
+            transition: transform .2s ease;
+        }
+        &:hover,
+        &:focus {
+            color: $primary;
+            text-decoration: underline;
+            outline: none;
+            img {}
+        }
+    }
+    // -------------------------------------------------------------------------
+    // Action buttons (View All Events / View All News) — uses .btn_sm
+    // -------------------------------------------------------------------------
+    .up_events__actions {
+        display: flex;
+    }
+}
+
+
+
+.news-events {
+  padding: 64px 24px;
+  color: #fff;
+  background: linear-gradient(270deg, #1C3C5C 0%, #617A63 100%);
+  position: relative;
+  margin-top: 40px;
+
+   &::before{
+    content: "";
+    top: -40px;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-image: url(../img/ns-pre-divide.svg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    position: absolute;
+    background-size: cover;
+    }
+    &::after{
+        content: "";
+        bottom: -40px;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        background-image: url(../img/ns-post-divide.svg);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        position: absolute;
+        background-size: cover;
+    }
+  &__container {
+    display: grid;
+    grid-template-columns: minmax(0, 2.05fr) minmax(300px, 0.95fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-heading {
+    margin: 0 0 32px;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 900;
+    line-height: 140%;
+  }
+
+  .news__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .news-card {
+    min-width: 0;
+
+    &__image-link {
+      display: block;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #284650;
+
+      &:focus-visible {
+        outline: 3px solid #ffe2b8;
+        outline-offset: 4px;
+      }
+    }
+
+    &__image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.5 / 1;
+      object-fit: cover;
+      transition: transform 0.25s ease;
+    }
+
+    &__image-link:hover &__image {
+      transform: scale(1.04);
+    }
+
+    &__body {
+      padding-top: 12px;
+    }
+
+    &__category {
+      display: inline-block;
+      margin-bottom: 8px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      background: #ffe7ca;
+      color: #171717;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: 0.14px;
+      text-transform: uppercase;
+    }
+
+    &__title {
+      margin: 0 0 8px;
+      color:  #FFF;
+    font-family: Lato;
+    font-size: 21px;
+    font-weight: 900;
+    line-height: 140%; 
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+
+        &:hover {
+          color: #ffe2b8;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+
+        &:focus-visible {
+          outline: 3px solid #ffe2b8;
+          outline-offset: 4px;
+          border-radius: 2px;
+        }
+      }
+    }
+
+    &__date {
+      display: block;
+      margin-bottom: 8px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 150%;
+      text-transform: uppercase;
+    }
+
+    &__description {
+      margin: 0;
+      color: #fff;
+      font-size: 16px;
+      line-height: normal;
+    }
+  }
+
+  .events {
+    min-width: 0;
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+  }
+
+  .event-card {
+    display: grid;
+    grid-template-columns: 104px minmax(0, 1fr);
+    min-width: 100%;
+    min-height: 122px;
+    overflow: hidden;
+    border: 1px solid #ffe7ca;
+    border-radius: 17px;
+    background: rgba(20, 47, 70, 0.2);
+
+    &__date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      background: #ffe7ca;
+      color: #173b5c;
+      text-align: center;
+    }
+
+    &__month {
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: $secondary-font;
+    }
+
+    &__day {
+      color: #080808;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.05;
+      font-family: $secondary-font;
+    }
+
+    &__year {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: $secondary-font;
+    }
+
+    &__content {
+      align-self: center;
+      min-width: 0;
+      padding: 8px 12px 12px 12px;
+    }
+
+    &__time {
+      display: block;
+      margin-bottom: 2px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 150%;
+    }
+
+    &__location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 0 8px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 150%;
+      text-transform: uppercase;
+      overflow-wrap: anywhere;
+
+      svg {
+        flex: 0 0 14px;
+        width: 14px;
+        height: 14px;
+        margin-top: 2px;
+        fill: none;
+        stroke: #ffd18e;
+        stroke-width: 2;
+      }
+    }
+
+    &__title {
+      margin: 0;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 140%;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        overflow-wrap: anywhere;
+
+        &:hover {
+          color: #ffe2b8;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+
+        &:focus-visible {
+          outline: 3px solid #ffe2b8;
+          outline-offset: 4px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  .section-button {
+    display: inline-flex;
+    margin-top: 28px;
+    padding: 8px 24px;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+}
+
+/* Tablet and small laptops */
+@media (max-width: 1050px) {
+  .news-events {
+
+    position: relative;
+
+
+   
+    &__container {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 52px;
+    }
+
+    .section-heading {
+      font-size: 30px;
+    }
+
+    .news__grid {
+      gap: 28px;
+    }
+
+    .events__list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .event-card {
+      grid-template-columns: 90px minmax(0, 1fr);
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .news-events {
+    padding: 40px 18px;
+
+    &__container {
+      gap: 44px;
+    }
+
+    .section-heading {
+      margin-bottom: 24px;
+      font-size: 27px;
+    }
+
+    .news__grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+
+    .news-card {
+      &__image {
+        aspect-ratio: 1.5 / 1;
+      }
+
+      &__title {
+        font-size: 20px;
+      }
+    }
+
+    .events__list {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .event-card {
+      grid-template-columns: 88px minmax(0, 1fr);
+      border-radius: 12px;
+
+      &__content {
+        padding: 14px 12px;
+      }
+
+      &__day {
+        font-size: 30px;
+      }
+
+      &__month {
+        font-size: 15px;
+      }
+
+      &__year {
+        font-size: 16px;
+      }
+
+      &__title {
+        font-size: 15px;
+      }
+
+      &__location {
+        font-size: 12px;
+      }
+    }
+
+    .section-button {
+      margin-top: 24px;
+    }
+  }
+}
+
+/* Extra-small phones */
+@media (max-width: 360px) {
+  .news-events {
+    padding-right: 12px;
+    padding-left: 12px;
+
+    .event-card {
+      grid-template-columns: 72px minmax(0, 1fr);
+
+      &__content {
+        padding: 12px 9px;
+      }
+
+      &__title {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .news-events *,
+  .news-events *::before,
+  .news-events *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .news-events .news-card__image-link:hover .news-card__image {
+    transform: none;
+  }
+}
+
+/* Windows High Contrast Mode */
+@media (forced-colors: active) {
+  .news-events .news-card__category,
+  .news-events .event-card__date,
+  .news-events .section-button {
+    border: 1px solid ButtonText;
+  }
+
+  .news-events a:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

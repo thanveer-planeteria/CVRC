@@ -1,0 +1,10 @@
+// Main entry: compile this file. Use: npm run sass (from project root)
+@use "sass:math";
+// 1. Core — variables, mixins, base, layout (no UI yet)
+@import "sections/core/_index";
+// 2. Home page sections
+@import "sections/home/_index";
+// 3. Template-specific styles (career, contact, news, etc.)
+@import "sections/templates/_index";
+// 4. Global — header, footer, main wrapper, responsive overrides
+@import "sections/global/_index";

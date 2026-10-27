@@ -1,0 +1,93 @@
+.detail_tab_wraper {
+  width: 100%;
+  background: #000;
+}
+.detail_tab_wraper .general-tabs {
+  width: 100%;
+}
+.detail_tab_wraper .tab_menu_wraper {
+  width: 100%;
+  border-bottom: 1px solid #526c50;
+}
+.detail_tab_wraper .nav.nav-tabs {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #526c50 #000;
+}
+.detail_tab_wraper .nav-item {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+}
+.detail_tab_wraper .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background: transparent;
+  color: #153b5b;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  text-align: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.detail_tab_wraper .nav-link:hover {
+  color: #fff;
+  background: #17232d;
+}
+.detail_tab_wraper .nav-link:focus-visible {
+  outline: 3px solid #f0c674;
+  outline-offset: -4px;
+}
+.detail_tab_wraper .nav-link.active, .detail_tab_wraper:has(#tab2:target) #tab-link2, .detail_tab_wraper:has(#tab3:target) #tab-link3, .detail_tab_wraper:has(#tab4:target) #tab-link4 {
+  border-color: #d9e5d4;
+  background: #fffaf5;
+  color: #647b64;
+}
+.detail_tab_wraper .tab-content {
+  width: 100%;
+  background: #fff;
+  color: #222;
+}
+.detail_tab_wraper .tab-pane {
+  display: none;
+  min-height: 80px;
+  padding: 24px;
+}
+.detail_tab_wraper .tab-pane:target {
+  display: block;
+}
+.detail_tab_wraper:not(:has(.tab-pane:target)) #tab1 {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .detail_tab_wraper .nav-link {
+    min-height: 42px;
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  .detail_tab_wraper .tab-pane {
+    padding: 18px 14px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .detail_tab_wraper .nav-link {
+    transition: none;
+  }
+}/*# sourceMappingURL=board.css.map */

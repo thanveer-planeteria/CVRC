@@ -1,0 +1,114 @@
+// =============================================================================
+// Media + Text section (image one side, content the other)
+// =============================================================================
+.media_text {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    background: $primary;
+    padding: 40px 24px;
+    position: relative;
+
+    &::before{
+        content: "";
+        top: -40px;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        background-image: url(../img/ms-pre-dvd.svg);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        position: absolute;
+        background-size: cover;
+    }
+    &::after{
+        content: "";
+        bottom: -40px;
+        left: 0;
+        width: 100%;
+        height: 45px;
+        background-image: url(../img/ms-post-dvd.svg);
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        position: absolute;
+        background-size: cover;
+    }
+    .media_text__row {
+        margin: 0;
+        display: flex;
+        column-gap: 60px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 40px;
+
+       
+    }
+    // -------------------------------------------------------------------------
+    // Content column
+    // -------------------------------------------------------------------------
+    .media_text__content {
+        display: flex;
+        align-items: center;
+        column-gap: 60px;
+       
+    }
+    .media_text__content-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 100%;
+        @include desk {
+            gap: 16px;
+        }
+    }
+    // h2 inherits Montserrat / 32px / 700 from _base.scss — only override color, line-height, margin
+    h2 {
+        margin: 0;
+        color: #ffffff;
+        line-height: 140%;
+        font-size: 44px;
+        font-weight: 800;
+    }
+    h3{
+
+        color: #253746;
+        margin-bottom: 0px;
+
+    }
+    // p inherits Montserrat / 16px / 400 / line-height 24px from _base.scss — only override what differs
+    p {
+        margin: 0;
+        color: #ffffff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px; /* 150% */
+    }
+    // .btn_sm reuses the global yellow button — only the border color changes here
+    .media_text__btn {
+        align-self: flex-start;
+      
+    }
+    // -------------------------------------------------------------------------
+    // Media column
+    // -------------------------------------------------------------------------
+    .media_text__media {
+        position: relative;
+       
+        img {
+            width: 100%;
+        }
+    }
+    // -------------------------------------------------------------------------
+    // Reverse variant — image on the left, content on the right (≥992px)
+    // Below 992px both variants stack the same way (image after content)
+    // -------------------------------------------------------------------------
+    &.media_text--reverse {
+        @include desk {
+            .media_text__row {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+}

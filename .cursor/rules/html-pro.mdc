@@ -1,0 +1,51 @@
+---
+description: "HTML/CSS/Sass — no classes on headings, parent selectors, no variables/mixins, mobile-first, WCAG 2.1 AA"
+globs: "**/*.html, **/*.scss, css/**/*.scss"
+alwaysApply: false
+---
+
+# HTML Pro Rules
+
+Read this file before writing any HTML or Sass. Enforces clean, accessible, responsive output.
+
+## Sass / CSS Rules
+
+- Do **NOT** use variables, mixins, functions, loops, or partials.
+- Do **NOT** write global element styles like `h2 { }` or `p { }`.
+- Do **NOT** add styling classes to heading tags (`h1`–`h6`). Headings must inherit styling from their parent wrapper.
+
+**Correct:** `.hero-section h2 { }`  
+**Wrong:** `.section-title { }`, `h2 { }`
+
+## HTML Rules
+
+- Do **NOT** add classes to heading (`h1`–`h6`), `p`, or `ul li` tags. Style them via parent selectors: `.hero-section h2 { }`
+- Use Bootstrap 4 grid when layout columns are required.
+
+## Responsive Rules
+
+- Mobile-first implementation required.
+- Fully responsive with no horizontal scroll at any breakpoint.
+- Verify layout at: 320px, 768px, 992px, 1200px.
+- Avoid fixed widths that break layout; images must scale properly.
+
+## Accessibility (WCAG 2.1 AA)
+
+- All interactive elements keyboard accessible with logical tab order.
+- All images have descriptive `alt` text; decorative images use `alt=""`.
+- Use `aria-expanded` and `aria-controls` for toggles.
+- Do **NOT** duplicate landmark roles; do **NOT** assign `role="main"` if `<main>` exists.
+
+
+## Project Integration Rules
+
+- Check `base.scss` for typography and heading styles before adding new styles.
+- Check `variable-mixins-breakpoints.scss` for existing variables, mixins, and breakpoints.
+- Reuse existing styles whenever possible.
+
+- If a heading or paragraph style already exists, do NOT redefine it.
+- Always use existing variables and mixins when available.
+
+- Only add new styles in `main.scss` if no existing style matches the requirement.
+
+- Keep HTML minimal, semantic, and free of unnecessary wrappers.
